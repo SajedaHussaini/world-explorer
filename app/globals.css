@@ -6,7 +6,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.feature-card {
+/* .feature-card {
   @apply bg-white
          dark:bg-white
          border border-zinc-200
@@ -14,4 +14,22 @@ body {
          hover:-translate-y-1
          hover:shadow-lg
          transition-all duration-300;
+
+         
+} */
+
+
+.feature-card {
+  @apply 
+    bg-white
+    dark:bg-zinc-800
+    border
+    border-zinc-200
+    dark:border-zinc-700
+    rounded-2xl
+    p-6
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:shadow-lg;
 }

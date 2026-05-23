@@ -1,60 +1,3 @@
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function HomePage() {
-//   return (
-//     <section className="text-center">
-//       <div className="relative h-56 md:h-80 flex justify-center items-center">
-        
-//         <div className="absolute inset-0 flex flex-col items-center justify-center">
-//           <h1 className="text-4xl md:text-6xl font-black mb-3 text-primary shadow">World Explorer</h1>
-//           <p className="text-lg md:text-2xl mb-6">Explore countries around the world and learn about their flags, capitals, populations, currencies, and languages.</p>
-//           <Link href="/countries" className="bg-primary py-3 px-7 rounded-full font-semibold text-white hover:bg-blue-700 transition">
-//             Explore Countries
-//           </Link>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Link from "next/link";
 import {
   Globe,
@@ -86,7 +29,7 @@ export default function HomePage() {
       >
         <div className="max-w-4xl">
 
-          <div
+          {/* <div
             className="
               inline-flex
               items-center
@@ -104,7 +47,7 @@ export default function HomePage() {
           >
             <Globe size={16} />
             Discover the world
-          </div>
+          </div> */}
 
           <h1
             className="
@@ -115,6 +58,7 @@ export default function HomePage() {
               text-zinc-900
               dark:text-white
               mb-6
+              mt-13
             "
           >
             Country Explorer
@@ -159,6 +103,7 @@ export default function HomePage() {
                 rounded-2xl
                 p-5
                 shadow-sm
+                mt-7
               "
             >
               <Globe
@@ -191,6 +136,7 @@ export default function HomePage() {
                 rounded-2xl
                 p-5
                 shadow-sm
+                mt-7
               "
             >
               <Users
@@ -223,6 +169,7 @@ export default function HomePage() {
                 rounded-2xl
                 p-5
                 shadow-sm
+                mt-7
               "
             >
               <Landmark
@@ -255,6 +202,7 @@ export default function HomePage() {
                 rounded-2xl
                 p-5
                 shadow-sm
+                mt-7
               "
             >
               <Earth
@@ -282,7 +230,7 @@ export default function HomePage() {
             <h2
               className="
                 text-2xl
-                md:text-3xl
+                md:text-1xl
                 font-bold
                 text-zinc-900
                 dark:text-white
@@ -390,261 +338,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      {/* <section
-        className="
-          bg-zinc-200
-          dark:bg-zinc-900
-          py-20
-          px-4
-          rounded-[3rem]
-          transition-colors
-        "
-      >
-        <div className="max-w-6xl mx-auto">
 
-          <div className="text-center mb-14">
-            <h2
-              className="
-                text-4xl
-                font-black
-                text-zinc-900
-                dark:text-white
-                mb-4
-              "
-            >
-              Powerful Features
-            </h2>
-
-            <p
-              className="
-                text-zinc-600
-                dark:text-zinc-400
-                max-w-2xl
-                mx-auto
-              "
-            >
-              Discover useful tools and features that help
-              you explore countries faster and easier.
-            </p>
-          </div>
-
-          FEATURE CARDS
-          <div
-            className="
-              grid
-              sm:grid-cols-2
-              lg:grid-cols-4
-              gap-6
-            "
-          >
-
-            CARD
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-950
-                rounded-3xl
-                p-7
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                hover:-translate-y-1
-                hover:shadow-xl
-                transition-all
-                duration-300
-              "
-            >
-              <Search
-                className="mb-5 text-zinc-700 dark:text-zinc-300"
-                size={34}
-              />
-
-              <h3 className="text-xl font-bold mb-3">
-                Smart Search
-              </h3>
-
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Search countries instantly by name,
-                capital, or region.
-              </p>
-            </div>
-
-            CARD
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-950
-                rounded-3xl
-                p-7
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                hover:-translate-y-1
-                hover:shadow-xl
-                transition-all
-                duration-300
-              "
-            >
-              <Heart
-                className="mb-5 text-zinc-700 dark:text-zinc-300"
-                size={34}
-              />
-
-              <h3 className="text-xl font-bold mb-3">
-                Favorites
-              </h3>
-
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Save your favorite countries for quick
-                access anytime.
-              </p>
-            </div>
-
-            CARD
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-950
-                rounded-3xl
-                p-7
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                hover:-translate-y-1
-                hover:shadow-xl
-                transition-all
-                duration-300
-              "
-            >
-              <MoonStar
-                className="mb-5 text-zinc-700 dark:text-zinc-300"
-                size={34}
-              />
-
-              <h3 className="text-xl font-bold mb-3">
-                Dark Mode
-              </h3>
-
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Switch between light and dark themes for
-                comfortable browsing.
-              </p>
-            </div>
-
-            CARD
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-950
-                rounded-3xl
-                p-7
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                hover:-translate-y-1
-                hover:shadow-xl
-                transition-all
-                duration-300
-              "
-            >
-              <MapPinned
-                className="mb-5 text-zinc-700 dark:text-zinc-300"
-                size={34}
-              />
-
-              <h3 className="text-xl font-bold mb-3">
-                Country Details
-              </h3>
-
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Learn about flags, languages, currencies,
-                and populations.
-              </p>
-            </div>
-
-          </div>
-
-
-          
-        </div>
-      </section> */}
-
-
-      {/* FEATURES SECTION */}
-{/* <section className="py-20 px-4 transition-colors">
-
-  <div className="max-w-6xl mx-auto">
-
-    TITLE
-    <div className="text-center mb-14">
-      <h2 className="text-4xl font-black text-zinc-900 dark:text-white mb-4">
-        Powerful Features
-      </h2>
-
-      <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-        Everything you need to explore countries efficiently and beautifully.
-      </p>
-    </div>
-
-    GRID (ALL CARDS TOGETHER)
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      Interactive Maps
-      <div className="feature-card">
-        <Globe size={32} className="text-zinc-700 dark:text-zinc-300 mb-3" />
-        <h3 className="text-lg font-bold mb-2">Interactive Maps</h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Explore countries with interactive map navigation.
-        </p>
-      </div>
-
-      Detailed Statistics
-      <div className="feature-card">
-        <Users size={32} className="text-zinc-700 dark:text-zinc-300 mb-3" />
-        <h3 className="text-lg font-bold mb-2">Detailed Statistics</h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Population, area, GDP and more key insights.
-        </p>
-      </div>
-
-      Global Coverage
-      <div className="feature-card">
-        <Earth size={32} className="text-zinc-700 dark:text-zinc-300 mb-3" />
-        <h3 className="text-lg font-bold mb-2">Global Coverage</h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Data for all countries and regions worldwide.
-        </p>
-      </div>
-
-      Currency Info
-      <div className="feature-card">
-        <Landmark size={32} className="text-zinc-700 dark:text-zinc-300 mb-3" />
-        <h3 className="text-lg font-bold mb-2">Currency Info</h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Learn about currencies and exchange systems.
-        </p>
-      </div>
-
-      Fast & Modern
-      <div className="feature-card">
-        <Search size={32} className="text-zinc-700 dark:text-zinc-300 mb-3" />
-        <h3 className="text-lg font-bold mb-2">Fast & Modern</h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Smooth, fast and optimized experience.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section> */}
 
 
 {/* FEATURES SECTION */}
-<section className="w-full py-16 px-4 bg-white dark:bg-zinc-950 transition-colors">
+<section className="w-full py-16 px-4 bg-white dark:bg-zinc-900 transition-colors">
 
   {/* FULL WIDTH CARD */}
-  <div className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-10">
+  <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-10">
 
     {/* CONTENT WRAPPER (فقط برای متن وسط چین) */}
     <div className="max-w-6xl mx-auto">
@@ -664,10 +365,10 @@ export default function HomePage() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {/* CARD */}
-        <div className="feature-card">
+        <div className="feature-card ">
           <div className="flex flex-col items-center text-center">
             <Globe size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Interactive Maps</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white" >Interactive Maps</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Explore countries with interactive map navigation.
             </p>
@@ -677,7 +378,7 @@ export default function HomePage() {
         <div className="feature-card">
           <div className="flex flex-col items-center text-center">
             <Users size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Detailed Statistics</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Detailed Statistics</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Population, area, GDP and more insights.
             </p>
@@ -687,7 +388,7 @@ export default function HomePage() {
         <div className="feature-card">
           <div className="flex flex-col items-center text-center">
             <Earth size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Global Coverage</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Global Coverage</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Access data for all countries worldwide.
             </p>
@@ -697,7 +398,7 @@ export default function HomePage() {
         <div className="feature-card">
           <div className="flex flex-col items-center text-center">
             <Search size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Smart Search</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Smart Search</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Find countries by name or capital.
             </p>
@@ -707,7 +408,7 @@ export default function HomePage() {
         <div className="feature-card">
           <div className="flex flex-col items-center text-center">
             <Heart size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Favorites</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Favorites</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Save countries for quick access.
             </p>
@@ -717,7 +418,7 @@ export default function HomePage() {
         <div className="feature-card">
           <div className="flex flex-col items-center text-center">
             <MoonStar size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2">Dark Mode</h3>
+            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Dark Mode</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Switch between light and dark themes.
             </p>
