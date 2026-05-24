@@ -1,68 +1,10 @@
-// // import CountryCard from "./CountryCard";
-
-// // export default function CountryGrid({ countries }) {
-// //   return (
-// //     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-// //       {countries.map((country) => (
-// //         <CountryCard key={country.cca3} country={country} />
-// //       ))}
-// //     </div>
-// //   );
-// // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import CountryCard from "./CountryCard";
-
-// export default function CountryGrid({ countries = [] }) {
-//   if (!Array.isArray(countries)) return null;
-
-//   return (
-//     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-//       {countries.map((country) => (
-//         <CountryCard key={country.cca3} country={country} />
-//       ))}
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import CountryCard from "./CountryCard";
 
-export default function CountryGrid({ countries = [] }) {
+// export default function CountryGrid({ countries = [] }) {
+export default function CountryGrid({
+  countries = [],
+  highlight,
+}) {
   if (!Array.isArray(countries)) return null;
 
   return (
@@ -71,8 +13,11 @@ export default function CountryGrid({ countries = [] }) {
         <CountryCard
           key={country.cca3}
           country={country}
+          highlight={highlight}
         />
       ))}
     </div>
   );
 }
+
+

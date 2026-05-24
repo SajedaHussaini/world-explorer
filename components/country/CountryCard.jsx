@@ -1,146 +1,67 @@
-// import Link from "next/link";
-// import FavoriteButton from "./FavoriteButton";
-// import { formatPopulation } from "@lib/formatters";
-
-// export default function CountryCard({ country }) {
-//   return (
-//     <div className="bg-white dark:bg-surface rounded-lg shadow hover:shadow-xl overflow-hidden transform hover:scale-[1.03] transition min-w-[220px]">
-//       <img
-//         src={country.flags?.png}
-//         alt={`${country.name.common} flag`}
-//         className="w-full h-32 object-cover"
-//         loading="lazy"
-//       />
-//       <div className="p-4">
-//         <h2 className="font-bold text-lg mb-1">{country.name.common}</h2>
-//         <p className="mb-0.5 text-xs">Capital: <span className="font-semibold">{country.capital?.[0] ?? "—"}</span></p>
-//         <p className="mb-0.5 text-xs">Region: <span className="font-semibold">{country.region}</span></p>
-//         <p className="mb-2 text-xs">Population: <span className="font-semibold">{formatPopulation(country.population)}</span></p>
-//         <Link href={`/countries/${country.cca3}`}>
-//           <button className="w-full my-1 bg-primary text-white rounded py-1 px-2 hover:bg-blue-700 transition">View Details</button>
-//         </Link>
-//         <FavoriteButton cca3={country.cca3} />
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Link from "next/link";
-// import FavoriteButton from "./FavoriteButton";
-// import { formatPopulation } from "@lib/formatters";
-
-// export default function CountryCard({ country }) {
-//   return (
-//     <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden w-full max-w-[320px] mx-auto hover:-translate-y-1">
-
-//       <img
-//         src={country.flags?.png}
-//         alt={`${country.name.common} flag`}
-//         className="w-full h-44 object-cover"
-//         loading="lazy"
-//       />
-
-//       <div className="p-5">
-
-//         <h2 className="text-xl font-bold mb-3">
-//           {country.name.common}
-//         </h2>
-
-//         <div className="space-y-1 text-sm text-gray-700">
-//           <p>
-//             <span className="font-semibold">Capital:</span>{" "}
-//             {country.capital?.[0] ?? "—"}
-//           </p>
-
-//           <p>
-//             <span className="font-semibold">Region:</span>{" "}
-//             {country.region}
-//           </p>
-
-//           <p>
-//             <span className="font-semibold">Population:</span>{" "}
-//             {formatPopulation(country.population)}
-//           </p>
-//         </div>
-
-//         {/* line */}
-//         <div className="border-t my-4"></div>
-
-//         <div className="flex gap-2">
-
-//           <Link
-//             href={`/countries/${country.cca3}`}
-//             className="flex-1"
-//           >
-//             <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition flex items-center justify-center gap-2 font-medium">
-//               View Details
-//               <span className="text-lg">{">"}</span>
-//             </button>
-//           </Link>
-
-//           <div className="flex-1">
-//             <FavoriteButton cca3={country.cca3} />
-//           </div>
-
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 import { formatPopulation } from "@lib/formatters";
 
-export default function CountryCard({ country }) {
+export default function CountryCard({
+  country,
+  highlight,
+}) {
+  const capital =
+    Array.isArray(country.capital) &&
+    country.capital.length > 0
+      ? country.capital[0]
+      : "No Capital";
+
+  const population =
+    typeof country.population ===
+    "number"
+      ? formatPopulation(
+          country.population
+        )
+      : "Unknown";
+
+      function HighlightedText({
+  text,
+  highlight,
+}) {
+  if (!highlight) {
+    return text;
+  }
+
+  const regex = new RegExp(
+    `(${highlight})`,
+    "gi"
+  );
+
+  const parts =
+    text.split(regex);
+
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden w-full max-w-[260px] mx-auto hover:-translate-y-1">
+    <>
+      {parts.map(
+        (part, index) =>
+          regex.test(part) ? (
+            <mark
+              key={index}
+              className="
+                bg-yellow-300
+                text-black
+                rounded
+                px-1
+              "
+            >
+              {part}
+            </mark>
+          ) : (
+            part
+          )
+      )}
+    </>
+  );
+}
+
+  return (
+    <div className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden w-full max-w-[260px] mx-auto hover:-translate-y-1">
 
       {/* image */}
       <div className="relative">
@@ -159,38 +80,54 @@ export default function CountryCard({ country }) {
 
       <div className="p-4">
 
-        <h2 className="text-lg font-bold mb-2">
-          {country.name.common}
+        {/* country name */}
+        <h2 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
+          {/* {country.name.common} */}
+          <HighlightedText
+  text={country.name.common}
+  highlight={highlight}
+/>
         </h2>
 
-        <div className="space-y-1 text-sm text-gray-700">
+        {/* info */}
+        <div className="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+
           <p>
-            <span className="font-semibold">Capital:</span>{" "}
-            {country.capital?.[0] ?? "—"}
+            <span className="font-semibold">
+              Capital:
+            </span>{" "}
+            {capital}
           </p>
 
           <p>
-            <span className="font-semibold">Population:</span>{" "}
-            {formatPopulation(country.population)}
+            <span className="font-semibold">
+              Population:
+            </span>{" "}
+            {population}
           </p>
         </div>
 
         {/* divider */}
-        <div className="border-t my-3"></div>
+        <div className="border-t border-gray-200 dark:border-zinc-700 my-3"></div>
 
-        {/* buttons */}
+        {/* actions */}
         <div className="flex items-center justify-between gap-2">
 
           <Link
-            href={`/countries/${country.cca3}`}
-            className="text-blue-600 hover:text-blue-800 text-sm font-semibold flex items-center gap-1 transition"
+            // href={`/countries/${country.cca3}`}
+            // href={`/countries/${country.cca3?.toLowerCase()}`}
+            //  href={`/countries/${country.cca3?.toLowerCase()`}
+            href={`/countries/${country.cca3?.toUpperCase()}`}
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-semibold flex items-center gap-1 transition"
           >
             View Details
             <span>{">"}</span>
           </Link>
 
           <div className="min-w-[120px]">
-            <FavoriteButton cca3={country.cca3} />
+            <FavoriteButton
+              cca3={country.cca3}
+            />
           </div>
 
         </div>
@@ -198,3 +135,5 @@ export default function CountryCard({ country }) {
     </div>
   );
 }
+
+
