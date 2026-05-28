@@ -9,7 +9,7 @@ export default function CountryCard({
 }) {
   const capital =
     Array.isArray(country.capital) &&
-    country.capital.length > 0
+      country.capital.length > 0
       ? country.capital[0]
       : "No Capital";
 
@@ -92,19 +92,20 @@ export default function CountryCard({
         />
 
 
-{/* <Image
-  src={country.flags?.png}
-  alt={`${country.name.common} flag`}
-  width={500}
-  height={300}
-  className="
+        {/* <Image
+          src={country.flags?.png}
+          alt={`${country.name.common} flag`}
+          width={500}
+          height={300}
+          className="
     w-full
     h-44
     sm:h-38
     md:h-40
     object-cover
   "
-/> */}
+          loading="lazy"
+        /> */}
 
         {/* REGION */}
         <span

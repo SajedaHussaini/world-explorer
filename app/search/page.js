@@ -21,7 +21,7 @@ export default function SearchPage() {
         space-y-6
       "
     >
-      
+
       {/* HEADER */}
       <div className="text-center space-y-2">
 

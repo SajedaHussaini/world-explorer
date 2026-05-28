@@ -31,7 +31,7 @@ export default function FavoritesClient() {
 
         const res = await fetch(
           "https://restcountries.com/v3.1/alpha?codes=" +
-            favorites.join(",")
+          favorites.join(",")
         );
 
         const data = await res.json();

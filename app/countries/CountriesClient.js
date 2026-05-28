@@ -243,11 +243,11 @@ export default function CountriesClient({
         countries={currentCountries}
       />
 
-{/* PAGINATION */}
-{totalPages > 1 && (
+      {/* PAGINATION */}
+      {totalPages > 1 && (
 
-  <div
-    className="
+        <div
+          className="
       flex
       items-center
       justify-center
@@ -258,17 +258,17 @@ export default function CountriesClient({
       scrollbar-hide
       px-1
     "
-  >
+        >
 
-    {/* PREV */}
-    <button
-      onClick={() =>
-        setPage((p) =>
-          Math.max(p - 1, 1)
-        )
-      }
-      disabled={page === 1}
-      className="
+          {/* PREV */}
+          <button
+            onClick={() =>
+              setPage((p) =>
+                Math.max(p - 1, 1)
+              )
+            }
+            disabled={page === 1}
+            className="
         min-w-[34px]
         h-[34px]
         sm:min-w-[42px]
@@ -288,27 +288,27 @@ export default function CountriesClient({
         transition
         shrink-0
       "
-    >
-      <ChevronLeft size={16} />
-    </button>
+          >
+            <ChevronLeft size={16} />
+          </button>
 
-    {/* PAGE NUMBERS */}
-    {Array.from(
-      { length: totalPages },
-      (_, i) => i + 1
-    )
-      .slice(
-        Math.max(page - 1, 0),
-        Math.max(page - 1, 0) + 3
-      )
-      .map((num) => (
+          {/* PAGE NUMBERS */}
+          {Array.from(
+            { length: totalPages },
+            (_, i) => i + 1
+          )
+            .slice(
+              Math.max(page - 1, 0),
+              Math.max(page - 1, 0) + 3
+            )
+            .map((num) => (
 
-        <button
-          key={num}
-          onClick={() =>
-            setPage(num)
-          }
-          className={`
+              <button
+                key={num}
+                onClick={() =>
+                  setPage(num)
+                }
+                className={`
             min-w-[34px]
             h-[34px]
             sm:min-w-[42px]
@@ -321,42 +321,41 @@ export default function CountriesClient({
             transition
             shrink-0
 
-            ${
-              page === num
-                ? `
+            ${page === num
+                    ? `
                   bg-black
                   text-white
                   dark:bg-white
                   dark:text-black
                 `
-                : `
+                    : `
                   bg-white
                   dark:bg-zinc-900
                   border
                   border-gray-300
                   dark:border-zinc-700
                 `
-            }
+                  }
           `}
-        >
-          {num}
-        </button>
-      ))}
+              >
+                {num}
+              </button>
+            ))}
 
-    {/* NEXT */}
-    <button
-      onClick={() =>
-        setPage((p) =>
-          Math.min(
-            p + 1,
-            totalPages
-          )
-        )
-      }
-      disabled={
-        page === totalPages
-      }
-      className="
+          {/* NEXT */}
+          <button
+            onClick={() =>
+              setPage((p) =>
+                Math.min(
+                  p + 1,
+                  totalPages
+                )
+              )
+            }
+            disabled={
+              page === totalPages
+            }
+            className="
         min-w-[34px]
         h-[34px]
         sm:min-w-[42px]
@@ -376,12 +375,12 @@ export default function CountriesClient({
         transition
         shrink-0
       "
-    >
-      <ChevronRight size={16} />
-    </button>
+          >
+            <ChevronRight size={16} />
+          </button>
 
-  </div>
-)}
+        </div>
+      )}
 
     </div>
   );

@@ -11,17 +11,32 @@
 
 
 
+// {
+//   "compilerOptions": {
+//     // "baseUrl": ".",
+//     "paths": {
+//       "@components/*": ["components/*"],
+//       "@country/*": ["components/country/*"],
+//       "@layout/*": ["components/layout/*"],
+//       "@ui/*": ["components/ui/*"],
+//       "@context/*": ["context/*"],
+//       "@lib/*": ["lib/*"],
+//       "@public/*": ["public/*"]
+//     }
+//   }
+// }
+
+
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@country/*": ["components/country/*"],
-      "@layout/*": ["components/layout/*"],
-      "@ui/*": ["components/ui/*"],
-      "@context/*": ["context/*"],
-      "@lib/*": ["lib/*"],
-      "@public/*": ["public/*"]
+      "@components/*": ["./components/*"],
+      "@country/*": ["./components/country/*"],
+      "@layout/*": ["./components/layout/*"],
+      "@ui/*": ["./components/ui/*"],
+      "@context/*": ["./context/*"],
+      "@lib/*": ["./lib/*"],
+      "@public/*": ["./public/*"]
     }
   }
 }
