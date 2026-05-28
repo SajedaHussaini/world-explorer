@@ -51,7 +51,6 @@ export default function SearchPage() {
 
       </div>
 
-      {/* SEARCH */}
       <CountrySearch />
     </div>
   );

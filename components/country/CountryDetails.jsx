@@ -1,5 +1,4 @@
 import Link from "next/link";
-// import Image from "next/image"
 
 import {
   Globe,
@@ -364,29 +363,6 @@ export default function CountryDetails({
                 transition
               "
             />
-
-            {/* <Image
-  src={
-    country.flags?.png ||
-    "/no-flag.png"
-  }
-  alt={country.name.common}
-  width={800}
-  height={500}
-  className="
-    w-full
-    h-[220px]
-    sm:h-[300px]
-    md:h-[300px]
-    object-cover
-    rounded-2xl
-    border
-    border-zinc-200
-    dark:border-zinc-700
-    hover:scale-[1.01]
-    transition
-  "
-/> */}
           </a>
 
           {/* MAP BUTTON */}

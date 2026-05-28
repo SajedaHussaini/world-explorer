@@ -282,7 +282,6 @@ export default function HomePage() {
             </select>
           </div>
 
-          {/* BUTTON */}
           <Link
             href="/countries"
             className="

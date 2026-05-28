@@ -159,7 +159,6 @@ export default function Footer() {
 
           </div>
 
-          {/* Resources */}
           <div>
 
             <h3
@@ -220,7 +219,6 @@ export default function Footer() {
 
         </div>
 
-        {/* bottom */}
         <div
           className="
             mt-14

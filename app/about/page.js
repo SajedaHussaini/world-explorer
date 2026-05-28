@@ -15,7 +15,6 @@ export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8 lg:space-y-10">
 
-      {/* hero */}
       <section
         className="
           relative
@@ -34,7 +33,6 @@ export default function AboutPage() {
         "
       >
 
-        {/* glow */}
         <div
           className="
             absolute
@@ -190,7 +188,6 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* features */}
       <section>
 
         <h2

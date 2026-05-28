@@ -1,4 +1,3 @@
-// favoriteClients.jsx
 "use client";
 
 import { useFavorites } from "@context/FavoritesContext";

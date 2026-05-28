@@ -44,7 +44,6 @@ export default function CountrySearch() {
   const [history, setHistory] =
     useState([]);
 
-  /* fetch countries */
   useEffect(() => {
     let ignore = false;
 

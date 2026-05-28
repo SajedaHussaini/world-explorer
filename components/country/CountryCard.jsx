@@ -1,7 +1,6 @@
 import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 import { formatPopulation } from "@lib/formatters";
-// import Image from "next/image"
 
 export default function CountryCard({
   country,
@@ -58,20 +57,7 @@ export default function CountryCard({
 
   return (
     <div
-      className="
-        w-full
-        bg-white
-        dark:bg-zinc-900
-        border
-        border-gray-200
-        dark:border-zinc-800
-        rounded-2xl
-        shadow-sm
-        hover:shadow-xl
-        transition-all
-        duration-300
-        overflow-hidden
-        hover:-translate-y-1
+      className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1
       "
     >
 
@@ -90,22 +76,6 @@ export default function CountryCard({
           "
           loading="lazy"
         />
-
-
-        {/* <Image
-          src={country.flags?.png}
-          alt={`${country.name.common} flag`}
-          width={500}
-          height={300}
-          className="
-    w-full
-    h-44
-    sm:h-38
-    md:h-40
-    object-cover
-  "
-          loading="lazy"
-        /> */}
 
         {/* REGION */}
         <span
