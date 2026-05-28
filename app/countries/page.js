@@ -1,4 +1,4 @@
-import CountriesClient from "./CountriesClient";
+import CountriesClient from "./countriesClient";
 // import CountriesClient from "@/CountriesClient";
 import { fetchAllCountries } from "@lib/api";
 

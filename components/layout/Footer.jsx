@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Globe,
-  Heart,
   Code2,
 } from "lucide-react";
 
@@ -199,7 +198,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://github.com/SajedaHussaini"
                 className="
                   flex
                   items-center
@@ -260,12 +259,7 @@ export default function Footer() {
               dark:text-zinc-400
             "
           >
-            Made with
-            <Heart
-              size={14}
-              className="fill-current"
-            />
-            using Next.js & TailwindCSS
+            Made with Love using Next.js & TailwindCSS
           </div>
 
         </div>
