@@ -296,14 +296,15 @@ Through this project I practiced:
 
 Screenshots
 
-home
+
 <img
   src="./public/home.png"
   alt="Home page"
   width="700"
 />
 <br>
-countries
+
+
 <img
   src="./public/countries.png"
   alt="Countries page"
@@ -311,7 +312,7 @@ countries
 />
 <br>
 
-details
+
 <img
   src="./public/details.png"
   alt="Country Details page"
@@ -319,7 +320,7 @@ details
 />
 <br>
 
-search
+
 <img
   src="./public/search.png"
   alt="Search page"
@@ -327,7 +328,7 @@ search
 />
 <br>
 
-favorites
+
 <img
   src="./public/favorites.png"
   alt="Favorites page"
@@ -335,7 +336,7 @@ favorites
 />
 <br>
 
-about
+
 <img
   src="./public/about.png"
   alt="About page"
