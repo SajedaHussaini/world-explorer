@@ -296,9 +296,7 @@ Through this project I practiced:
 
 Screenshots
 
-Add screenshots here before submission:
-
-- home.png
+- home
 
 - countries.png
 
