@@ -297,6 +297,11 @@ Through this project I practiced:
 Screenshots
 
 - home
+<img
+  src="./public/home.png"
+  alt="Home page"
+  width="700"
+/>
 
 - countries.png
 
