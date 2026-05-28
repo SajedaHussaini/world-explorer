@@ -32,22 +32,21 @@
 //   return (
 //     <button
 //       onClick={toggleTheme}
-//       className="p-2 rounded-full bg-white text-black dark:bg-gray-700 dark:text-white transition"
+//       className="
+//         p-2
+//         rounded-full
+//         bg-zinc-300
+//         dark:bg-zinc-800
+//         text-zinc-900
+//         dark:text-zinc-100
+//         hover:scale-105
+//         transition
+//       "
 //     >
 //       {dark ? <Sun size={18} /> : <Moon size={18} />}
 //     </button>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -73,9 +72,12 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
@@ -83,6 +85,10 @@ export default function ThemeToggle() {
       setDark(true);
     }
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const toggleTheme = () => {
     const html = document.documentElement;
@@ -101,16 +107,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="
-        p-2
-        rounded-full
-        bg-zinc-300
-        dark:bg-zinc-800
-        text-zinc-900
-        dark:text-zinc-100
-        hover:scale-105
-        transition
-      "
+      className="p-2 rounded-full bg-zinc-300 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:scale-105 transition"
     >
       {dark ? <Sun size={18} /> : <Moon size={18} />}
     </button>

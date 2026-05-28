@@ -1,40 +1,3 @@
-// import CountrySearch from "@components/country/CountrySearch";
-
-// export const metadata = {
-//   title: "Search | World Explorer",
-// };
-
-// export default function SearchPage() {
-//   return (
-//     <div className="p-6">
-//       <h1 className="font-bold text-2xl mb-4">
-//         Search Countries
-//       </h1>
-
-//       <CountrySearch />
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import CountrySearch from "@components/country/CountrySearch";
 
 export const metadata = {
@@ -44,17 +7,48 @@ export const metadata = {
 
 export default function SearchPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-6">
+    <div
+      className="
+        max-w-6xl
+        mx-auto
+
+        px-4
+        sm:px-6
+
+        py-6
+        sm:py-10
+
+        space-y-6
+      "
+    >
       
       {/* HEADER */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl md:text-4xl font-bold">
+
+        <h1
+          className="
+            text-2xl
+            sm:text-3xl
+            md:text-4xl
+
+            font-bold
+          "
+        >
           Search Countries
         </h1>
 
-        <p className="text-gray-500 dark:text-gray-400">
+        <p
+          className="
+            text-sm
+            sm:text-base
+
+            text-gray-500
+            dark:text-gray-400
+          "
+        >
           Find any country by name instantly
         </p>
+
       </div>
 
       {/* SEARCH */}

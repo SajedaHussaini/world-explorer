@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   Globe,
   Users,
@@ -7,66 +12,85 @@ import {
   Search,
   Heart,
   MoonStar,
-  MapPinned,
   ChevronDown,
 } from "lucide-react";
 
 export default function HomePage() {
-  return (
-    <div className="space-y-20">
+  const router = useRouter();
 
-      {/* HERO SECTION */}
+  const [countries, setCountries] =
+    useState([]);
+
+  const [selectedCountry, setSelectedCountry] =
+    useState("");
+
+  useEffect(() => {
+    async function fetchCountries() {
+      try {
+        const res = await fetch(
+          "https://restcountries.com/v3.1/all?fields=name,cca3"
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed");
+        }
+
+        const data = await res.json();
+
+        const sorted = data.sort(
+          (a, b) =>
+            a.name.common.localeCompare(
+              b.name.common
+            )
+        );
+
+        setCountries(sorted);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchCountries();
+  }, []);
+
+  return (
+    <div className="space-y-16 md:space-y-24">
+
+      {/* HERO */}
       <section
         className="
-          min-h-[80vh]
+          min-h-screen
           flex
-          flex-col
-          justify-center
           items-center
-          text-center
+          justify-center
           px-4
+          py-16
         "
       >
-        <div className="max-w-4xl">
+        <div className="w-full max-w-6xl text-center">
 
-          {/* <div
-            className="
-              inline-flex
-              items-center
-              gap-2
-              px-4
-              py-2
-              rounded-full
-              bg-zinc-200
-              dark:bg-zinc-800
-              text-sm
-              text-zinc-700
-              dark:text-zinc-300
-              mb-6
-            "
-          >
-            <Globe size={16} />
-            Discover the world
-          </div> */}
-
+          {/* TITLE */}
           <h1
             className="
-              text-5xl
-              md:text-7xl
+              text-4xl
+              sm:text-5xl
+              md:text-6xl
+              lg:text-7xl
               font-black
               tracking-tight
               text-zinc-900
               dark:text-white
               mb-6
-              mt-13
             "
           >
-            Country Explorer
+            World Explorer
           </h1>
 
+          {/* DESCRIPTION */}
           <p
             className="
-              text-lg
+              text-base
+              sm:text-lg
               md:text-xl
               leading-relaxed
               text-zinc-600
@@ -76,8 +100,9 @@ export default function HomePage() {
               mb-10
             "
           >
-            Explore countries around the world and discover
-            their capitals, populations, currencies,
+            Explore countries around the world
+            and discover their capitals,
+            populations, currencies,
             languages, regions, and much more.
           </p>
 
@@ -86,151 +111,79 @@ export default function HomePage() {
             className="
               grid
               grid-cols-2
-              md:grid-cols-4
+              lg:grid-cols-4
               gap-4
               mb-12
             "
           >
 
-            {/* Countries */}
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-900
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                rounded-2xl
-                p-5
-                shadow-sm
-                mt-7
-              "
-            >
-              <Globe
-                className="
-                  mx-auto
-                  mb-3
-                  text-zinc-700
-                  dark:text-zinc-300
-                "
-                size={28}
-              />
+            {[
+              {
+                icon: Globe,
+                value: "195+",
+                label: "Countries",
+              },
+              {
+                icon: Users,
+                value: "8B+",
+                label: "Population",
+              },
+              {
+                icon: Landmark,
+                value: "193",
+                label: "UN Members",
+              },
+              {
+                icon: Earth,
+                value: "7",
+                label: "Continents",
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
 
-              <h3 className="text-2xl font-bold">
-                195+
-              </h3>
+              return (
+                <div
+                  key={index}
+                  className="
+                    bg-white
+                    dark:bg-zinc-900
+                    border
+                    border-zinc-200
+                    dark:border-zinc-800
+                    rounded-2xl
+                    p-4
+                    sm:p-5
+                    shadow-sm
+                  "
+                >
+                  <Icon
+                    className="
+                      mx-auto
+                      mb-3
+                      text-zinc-700
+                      dark:text-zinc-300
+                    "
+                    size={28}
+                  />
 
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Countries
-              </p>
-            </div>
+                  <h3 className="text-xl sm:text-2xl font-bold">
+                    {item.value}
+                  </h3>
 
-            {/* Population */}
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-900
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                rounded-2xl
-                p-5
-                shadow-sm
-                mt-7
-              "
-            >
-              <Users
-                className="
-                  mx-auto
-                  mb-3
-                  text-zinc-700
-                  dark:text-zinc-300
-                "
-                size={28}
-              />
-
-              <h3 className="text-2xl font-bold">
-                8B+
-              </h3>
-
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Population
-              </p>
-            </div>
-
-            {/* UN */}
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-900
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                rounded-2xl
-                p-5
-                shadow-sm
-                mt-7
-              "
-            >
-              <Landmark
-                className="
-                  mx-auto
-                  mb-3
-                  text-zinc-700
-                  dark:text-zinc-300
-                "
-                size={28}
-              />
-
-              <h3 className="text-2xl font-bold">
-                193
-              </h3>
-
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                UN Members
-              </p>
-            </div>
-
-            {/* Continents */}
-            <div
-              className="
-                bg-white
-                dark:bg-zinc-900
-                border
-                border-zinc-200
-                dark:border-zinc-800
-                rounded-2xl
-                p-5
-                shadow-sm
-                mt-7
-              "
-            >
-              <Earth
-                className="
-                  mx-auto
-                  mb-3
-                  text-zinc-700
-                  dark:text-zinc-300
-                "
-                size={28}
-              />
-
-              <h3 className="text-2xl font-bold">
-                7
-              </h3>
-
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Continents
-              </p>
-            </div>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                    {item.label}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* START EXPLORING */}
+          {/* START */}
           <div className="mb-6">
             <h2
               className="
                 text-2xl
-                md:text-1xl
+                md:text-3xl
                 font-bold
                 text-zinc-900
                 dark:text-white
@@ -240,17 +193,12 @@ export default function HomePage() {
               Start Exploring
             </h2>
 
-            <p
-              className="
-                text-zinc-600
-                dark:text-zinc-400
-              "
-            >
+            <p className="text-zinc-600 dark:text-zinc-400">
               Select a country and begin your journey.
             </p>
           </div>
 
-          {/* DROPDOWN */}
+          {/* SELECT */}
           <div
             className="
               max-w-xl
@@ -266,6 +214,7 @@ export default function HomePage() {
                 top-1/2
                 -translate-y-1/2
                 text-zinc-500
+                pointer-events-none
               "
               size={20}
             />
@@ -277,11 +226,25 @@ export default function HomePage() {
                 top-1/2
                 -translate-y-1/2
                 text-zinc-500
+                pointer-events-none
               "
               size={20}
             />
 
             <select
+              value={selectedCountry}
+              onChange={(e) => {
+                const value =
+                  e.target.value.toUpperCase();
+
+                setSelectedCountry(value);
+
+                if (value) {
+                  router.push(
+                    `/countries/${value}`
+                  );
+                }
+              }}
               className="
                 w-full
                 appearance-none
@@ -294,6 +257,8 @@ export default function HomePage() {
                 py-4
                 pl-12
                 pr-12
+                text-sm
+                sm:text-base
                 text-zinc-800
                 dark:text-zinc-100
                 outline-none
@@ -302,14 +267,18 @@ export default function HomePage() {
                 transition
               "
             >
-              <option>
+              <option value="">
                 Select a country to explore...
               </option>
 
-              <option>Canada</option>
-              <option>Japan</option>
-              <option>Germany</option>
-              <option>Brazil</option>
+              {countries.map((country) => (
+                <option
+                  key={country.cca3}
+                  value={country.cca3}
+                >
+                  {country.name.common}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -318,7 +287,10 @@ export default function HomePage() {
             href="/countries"
             className="
               inline-flex
+              w-full
+              sm:w-auto
               items-center
+              justify-center
               gap-2
               bg-zinc-900
               dark:bg-zinc-100
@@ -338,98 +310,149 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FEATURES */}
+      <section className="px-4 pb-16">
 
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+            bg-white
+            dark:bg-zinc-900
+            border
+            border-zinc-200
+            dark:border-zinc-800
+            rounded-3xl
+            p-6
+            sm:p-8
+            md:p-10
+          "
+        >
 
+          {/* TITLE */}
+          <div className="text-center mb-12">
+            <h2
+              className="
+                text-3xl
+                md:text-4xl
+                font-black
+                text-zinc-900
+                dark:text-white
+                mb-4
+              "
+            >
+              Powerful Features
+            </h2>
 
-{/* FEATURES SECTION */}
-<section className="w-full py-16 px-4 bg-white dark:bg-zinc-900 transition-colors">
-
-  {/* FULL WIDTH CARD */}
-  <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-10">
-
-    {/* CONTENT WRAPPER (فقط برای متن وسط چین) */}
-    <div className="max-w-6xl mx-auto">
-
-      {/* TITLE */}
-      <div className="text-center mb-14">
-        <h2 className="text-4xl font-black text-zinc-900 dark:text-white mb-4">
-          Powerful Features
-        </h2>
-
-        <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-          Everything you need to explore countries efficiently and beautifully.
-        </p>
-      </div>
-
-      {/* GRID */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        {/* CARD */}
-        <div className="feature-card ">
-          <div className="flex flex-col items-center text-center">
-            <Globe size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white" >Interactive Maps</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Explore countries with interactive map navigation.
+            <p
+              className="
+                text-zinc-600
+                dark:text-zinc-400
+                max-w-2xl
+                mx-auto
+              "
+            >
+              Everything you need to explore
+              countries efficiently and beautifully.
             </p>
           </div>
-        </div>
 
-        <div className="feature-card">
-          <div className="flex flex-col items-center text-center">
-            <Users size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Detailed Statistics</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Population, area, GDP and more insights.
-            </p>
+          {/* GRID */}
+          <div
+            className="
+              grid
+              sm:grid-cols-2
+              lg:grid-cols-3
+              gap-6
+            "
+          >
+
+            {[
+              {
+                icon: Globe,
+                title: "Interactive Maps",
+                desc: "Explore countries with interactive map navigation.",
+              },
+              {
+                icon: Users,
+                title: "Detailed Statistics",
+                desc: "Population, area, GDP and more insights.",
+              },
+              {
+                icon: Earth,
+                title: "Global Coverage",
+                desc: "Access data for all countries worldwide.",
+              },
+              {
+                icon: Search,
+                title: "Smart Search",
+                desc: "Find countries by name or capital.",
+              },
+              {
+                icon: Heart,
+                title: "Favorites",
+                desc: "Save countries for quick access.",
+              },
+              {
+                icon: MoonStar,
+                title: "Dark Mode",
+                desc: "Switch between light and dark themes.",
+              },
+            ].map((feature, index) => {
+              const Icon = feature.icon;
+
+              return (
+                <div
+                  key={index}
+                  className="
+                    rounded-2xl
+                    border
+                    border-zinc-200
+                    dark:border-zinc-800
+                    p-6
+                    bg-zinc-50
+                    dark:bg-zinc-950
+                    hover:shadow-md
+                    transition
+                  "
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <Icon
+                      size={32}
+                      className="
+                        mb-3
+                        text-zinc-700
+                        dark:text-zinc-300
+                      "
+                    />
+
+                    <h3
+                      className="
+                        font-bold
+                        mb-2
+                        text-zinc-900
+                        dark:text-white
+                      "
+                    >
+                      {feature.title}
+                    </h3>
+
+                    <p
+                      className="
+                        text-sm
+                        text-zinc-600
+                        dark:text-zinc-400
+                      "
+                    >
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-
-        <div className="feature-card">
-          <div className="flex flex-col items-center text-center">
-            <Earth size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Global Coverage</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Access data for all countries worldwide.
-            </p>
-          </div>
-        </div>
-
-        <div className="feature-card">
-          <div className="flex flex-col items-center text-center">
-            <Search size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Smart Search</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Find countries by name or capital.
-            </p>
-          </div>
-        </div>
-
-        <div className="feature-card">
-          <div className="flex flex-col items-center text-center">
-            <Heart size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Favorites</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Save countries for quick access.
-            </p>
-          </div>
-        </div>
-
-        <div className="feature-card">
-          <div className="flex flex-col items-center text-center">
-            <MoonStar size={32} className="mb-3 text-zinc-700 dark:text-zinc-300" />
-            <h3 className="font-bold mb-2 text-zinc-900 dark:text-white">Dark Mode</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Switch between light and dark themes.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
     </div>
   );
 }

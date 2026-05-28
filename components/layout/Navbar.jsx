@@ -1,94 +1,3 @@
-// "use client";
-
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import ThemeToggle from "./ThemeToggle";
-
-// const navLinks = [
-//   { href: "/", label: "Home" },
-//   { href: "/countries", label: "Countries" },
-//   { href: "/search", label: "Search" },
-//   { href: "/favorites", label: "Favorites" },
-//   { href: "/about", label: "About" },
-// ];
-
-// export default function Navbar() {
-//   const pathname = usePathname();
-
-//   return (
-//     <nav
-//       className="
-//       bg-zinc-200
-//       dark:bg-zinc-900
-//       border-b
-//       border-zinc-300
-//       dark:border-zinc-800
-//       transition-colors
-//     "
-//     >
-//       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-//         <Link
-//           href="/"
-//           className="
-//           text-xl
-//           font-bold
-//           text-zinc-900
-//           dark:text-zinc-100
-//         "
-//         >
-//           Country Explorer
-//         </Link>
-
-//         <ul className="flex items-center gap-5">
-//           {navLinks.map((link) => (
-//             <li key={link.href}>
-//               <Link
-//                 href={link.href}
-//                 className={`
-//                   transition-colors
-//                   hover:text-zinc-500
-//                   dark:hover:text-zinc-400
-//                   ${
-//                     pathname === link.href
-//                       ? "font-semibold text-zinc-950 dark:text-white"
-//                       : "text-zinc-700 dark:text-zinc-300"
-//                   }
-//                 `}
-//               >
-//                 {link.label}
-//               </Link>
-//             </li>
-//           ))}
-
-//           <ThemeToggle />
-//         </ul>
-//       </div>
-//     </nav>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import Link from "next/link";
@@ -142,40 +51,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className="
-        sticky
-        top-0
-        z-50
-        bg-zinc-200
-        dark:bg-zinc-900
-        border-b
-        border-zinc-300
-        dark:border-zinc-800
-        transition-colors
-      "
+      className="sticky top-0 z-50 bg-zinc-200 dark:bg-zinc-900 border-b border-zinc-300 dark:border-zinc-800 transition-colors"
     >
       <div
-        className="
-          max-w-6xl
-          mx-auto
-          flex
-          items-center
-          justify-between
-          px-4
-          py-4
-        "
+        className=" max-w-6xl mx-auto flex items-center justify-between px-3 sm:px-4 py-3 sm:py-4 "
       >
         {/* Logo */}
         <Link
           href="/"
-          className="
-            text-xl
-            font-bold
-            text-zinc-900
-            dark:text-zinc-100
-          "
+          className="text-base sm:text-lg md:text-xl font-bold text-zinc-900 dark:text-zinc-100 "
         >
-          Country Explorer
+          World Explorer
         </Link>
 
         {/* Desktop Menu */}
@@ -187,13 +73,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`
-                    flex
-                    items-center
-                    gap-2
-                    transition-colors
-                    hover:text-zinc-500
-                    dark:hover:text-zinc-400
+                  className={` flex items-center gap-2 text-sm lg:text-base transition-colors hover:text-zinc-500 dark:hover:text-zinc-400
                     ${
                       pathname === link.href
                         ? "font-semibold text-zinc-950 dark:text-white"
@@ -217,34 +97,21 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="
-              p-2
-              rounded-lg
-              bg-zinc-300
-              dark:bg-zinc-800
-              text-zinc-900
-              dark:text-zinc-100
-              transition
-            "
+            className="p-2 rounded-lg bg-zinc-300 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 transition"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div
-          className="
-            md:hidden
-            border-t
-            border-zinc-300
-            dark:border-zinc-800
-            bg-zinc-100
-            dark:bg-zinc-900
-          "
-        >
+{open && (
+  <div
+    className="fixed inset-0 top-[73px] z-40 md:hidden bg-zinc-100/95 dark:bg-zinc-900/95 backdrop-blur-md border-t border-zinc-300 dark:border-zinc-800 overflow-y-auto "
+  >
+
           <ul className="flex flex-col p-4 gap-4">
+          {/* <ul className="flex flex-col p-6 gap-5"> */}
             {navLinks.map((link) => {
               const Icon = link.icon;
 
@@ -253,24 +120,16 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`
-                      flex
-                      items-center
-                      gap-3
-                      px-3
-                      py-2
-                      rounded-xl
-                      transition-colors
-                      hover:bg-zinc-200
-                      dark:hover:bg-zinc-800
-                      ${
-                        pathname === link.href
-                          ? "bg-zinc-300 dark:bg-zinc-800 font-medium"
-                          : ""
-                      }
-                    `}
+
+                    className={`flex items-center gap-3 px-4 py-4 rounded-2xl text-lg transition-all hover:bg-zinc-200 dark:hover:bg-zinc-800
+  ${
+    pathname === link.href
+      ? "bg-zinc-300 dark:bg-zinc-800 font-semibold"
+      : ""
+  }
+`}
                   >
-                    <Icon size={18} />
+                    <Icon size={20} />
 
                     <span>{link.label}</span>
                   </Link>

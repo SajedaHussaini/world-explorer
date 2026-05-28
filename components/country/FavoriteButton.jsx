@@ -24,7 +24,7 @@ export default function FavoriteButton({ cca3 }) {
     <button
       type="button"
       onClick={toggleFavorite}
-      className={`flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-300 w-full border
+      className={`flex items-center justify-center gap-2 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 w-full border
       ${
         favorite
           ? "bg-red-500 text-white border-red-500 hover:bg-red-600"
@@ -32,16 +32,17 @@ export default function FavoriteButton({ cca3 }) {
       }`}
     >
       <Heart
-        size={16}
-        className={`transition-all duration-300 ${
+        size={15}
+        className={`transition-all duration-300 shrink-0 ${
           favorite
             ? "fill-white"
             : "fill-transparent"
         }`}
       />
 
-      {favorite ? "Saved" : "Favorite"}
+      <span className="truncate">
+        {favorite ? "Saved" : "Favorite"}
+      </span>
     </button>
   );
 }
-

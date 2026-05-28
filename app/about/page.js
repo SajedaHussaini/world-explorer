@@ -1,72 +1,3 @@
-// export const metadata = {
-//   title: "About | World Explorer",
-// };
-
-// export default function AboutPage() {
-//   return (
-//     <article className="max-w-2xl mx-auto">
-//       <h1 className="text-2xl font-bold mb-2">About World Explorer</h1>
-//       <p className="mb-2">
-//         World Explorer is a modern Next.js project that lets you browse, search and learn about countries around the world.
-//         All data is fetched in real-time from the <a href="https://restcountries.com" className="underline text-primary" target="_blank" rel="noopener noreferrer">REST Countries API</a>.
-//       </p>
-//       <ul className="mb-2 list-disc pl-6">
-//         <li>App Router, file-based routing, layouts</li>
-//         <li>Server and client components</li>
-//         <li>Data fetching and caching</li>
-//         <li>Dynamic and static rendering</li>
-//         <li>Bonus: region filters, favorites, dark mode, loading/404 pages, sorting</li>
-//       </ul>
-//       <p>
-//         Built for Week 13 and Week 14 assignment. Powered by Next.js 13+ and Tailwind CSS.
-//       </p>
-//     </article>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const metadata = {
   title: "About | World Explorer",
 };
@@ -82,20 +13,22 @@ import {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-5xl mx-auto space-y-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8 lg:space-y-10">
 
       {/* hero */}
       <section
         className="
           relative
           overflow-hidden
-          rounded-[32px]
+          rounded-3xl
+          sm:rounded-[32px]
           border
           border-zinc-200
           dark:border-zinc-800
           bg-white
           dark:bg-zinc-900
-          p-8
+          p-5
+          sm:p-8
           md:p-12
           shadow-sm
         "
@@ -107,8 +40,10 @@ export default function AboutPage() {
             absolute
             -top-24
             -right-24
-            w-72
-            h-72
+            w-44
+            h-44
+            sm:w-72
+            sm:h-72
             rounded-full
             bg-zinc-500/10
             blur-3xl
@@ -117,30 +52,47 @@ export default function AboutPage() {
 
         <div className="relative z-10">
 
-          <div className="flex items-center gap-4">
+          <div
+            className="
+              flex
+              flex-col
+              sm:flex-row
+              sm:items-center
+              gap-4
+            "
+          >
 
             <div
               className="
-                w-14
+                w-12
                 h-12
-                rounded-3xl
+                sm:w-14
+                sm:h-14
+                rounded-2xl
+                sm:rounded-3xl
                 bg-zinc-600
                 flex
                 items-center
                 justify-center
                 text-white
                 shadow-lg
+                shrink-0
               "
             >
-              <Globe size={28} />
+              <Globe
+                size={24}
+                className="sm:w-7 sm:h-7"
+              />
             </div>
 
             <div>
               <h1
                 className="
-                  text-4xl
+                  text-3xl
+                  sm:text-4xl
                   md:text-5xl
                   font-black
+                  leading-tight
                   text-zinc-900
                   dark:text-white
                 "
@@ -151,6 +103,9 @@ export default function AboutPage() {
               <p
                 className="
                   mt-3
+                  text-sm
+                  sm:text-base
+                  leading-relaxed
                   text-zinc-500
                   dark:text-zinc-400
                   max-w-2xl
@@ -170,24 +125,28 @@ export default function AboutPage() {
       {/* description */}
       <section
         className="
-          rounded-[32px]
+          rounded-3xl
+          sm:rounded-[32px]
           border
           border-zinc-200
           dark:border-zinc-800
           bg-white
           dark:bg-zinc-900
-          p-8
+          p-5
+          sm:p-8
           shadow-sm
         "
       >
 
         <h2
           className="
-            text-2xl
+            text-xl
+            sm:text-2xl
             font-bold
             text-zinc-900
             dark:text-white
-            mb-5
+            mb-4
+            sm:mb-5
           "
         >
           Project Overview
@@ -195,7 +154,10 @@ export default function AboutPage() {
 
         <p
           className="
-            leading-8
+            text-sm
+            sm:text-base
+            leading-7
+            sm:leading-8
             text-zinc-600
             dark:text-zinc-300
           "
@@ -216,6 +178,7 @@ export default function AboutPage() {
               dark:text-blue-400
               hover:underline
               font-medium
+              break-words
             "
           >
             REST Countries API
@@ -232,17 +195,28 @@ export default function AboutPage() {
 
         <h2
           className="
-            text-2xl
+            text-xl
+            sm:text-2xl
             font-bold
             text-zinc-900
             dark:text-white
-            mb-6
+            mb-5
+            sm:mb-6
           "
         >
           Features
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-4
+            sm:gap-6
+          "
+        >
 
           <FeatureCard
             icon={<Globe size={22} />}
@@ -286,30 +260,34 @@ export default function AboutPage() {
       {/* tech stack */}
       <section
         className="
-          rounded-[32px]
+          rounded-3xl
+          sm:rounded-[32px]
           border
           border-zinc-200
           dark:border-zinc-800
           bg-white
           dark:bg-zinc-900
-          p-8
+          p-5
+          sm:p-8
           shadow-sm
         "
       >
 
         <h2
           className="
-            text-2xl
+            text-xl
+            sm:text-2xl
             font-bold
             text-zinc-900
             dark:text-white
-            mb-6
+            mb-5
+            sm:mb-6
           "
         >
           Technologies Used
         </h2>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
 
           {[
             "Next.js",
@@ -324,14 +302,19 @@ export default function AboutPage() {
             <div
               key={tech}
               className="
-                px-5
-                py-3
+                px-4
+                sm:px-5
+                py-2.5
+                sm:py-3
                 rounded-2xl
                 bg-zinc-100
                 dark:bg-zinc-800
                 text-zinc-800
                 dark:text-zinc-200
+                text-sm
+                sm:text-base
                 font-medium
+                break-words
               "
             >
               {tech}
@@ -346,6 +329,9 @@ export default function AboutPage() {
         className="
           text-center
           py-4
+          text-sm
+          sm:text-base
+          leading-relaxed
           text-zinc-500
           dark:text-zinc-400
         "
@@ -366,13 +352,15 @@ function FeatureCard({
   return (
     <div
       className="
-        rounded-3xl
+        rounded-2xl
+        sm:rounded-3xl
         border
         border-zinc-200
         dark:border-zinc-800
         bg-white
         dark:bg-zinc-900
-        p-6
+        p-5
+        sm:p-6
         shadow-sm
         hover:shadow-lg
         transition
@@ -381,8 +369,10 @@ function FeatureCard({
 
       <div
         className="
-          w-12
-          h-12
+          w-11
+          h-11
+          sm:w-12
+          sm:h-12
           rounded-2xl
           bg-zinc-500
           text-white
@@ -397,7 +387,8 @@ function FeatureCard({
 
       <h3
         className="
-          text-lg
+          text-base
+          sm:text-lg
           font-bold
           text-zinc-900
           dark:text-white
@@ -410,7 +401,8 @@ function FeatureCard({
         className="
           mt-3
           text-sm
-          leading-7
+          leading-6
+          sm:leading-7
           text-zinc-500
           dark:text-zinc-400
         "
